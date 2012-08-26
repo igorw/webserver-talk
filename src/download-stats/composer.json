@@ -1,0 +1,9 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "react/http": "0.1.*",
+        "react/zmq": "dev-master",
+        "predis/predis-async": "dev-master",
+        "igorw/event-source": "dev-master"
+    }
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Download count</title>
+</head>
+<body>
+
+<h1>Download count: <span id="download_count"></span></h1>
+
+<script>
+var source = new EventSource('http://localhost:8080');
+source.addEventListener('pub:downloads', function (event) {
+    document.getElementById('download_count').innerText = event.data;
+});
+</script>
+
+</body>
+</html>
