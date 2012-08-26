@@ -2,7 +2,9 @@
 
 function parseRequest($request)
 {
-    $lines = explode("\r\n", $request);
+    list($head, $body) = explode("\r\n\r\n", $request, 2);
+
+    $lines = explode("\r\n", $head);
 
     $requestLine = array_shift($lines);
     list($method, $path, $protocol) = explode(' ', $requestLine);
@@ -12,8 +14,6 @@ function parseRequest($request)
         list($name, $value) = explode(':', $header, 2);
         $headers[trim($name)] = trim($value);
     }
-
-    $body = array_shift($lines);
 
     return compact('method', 'path', 'protocol', 'headers', 'body');
 }
